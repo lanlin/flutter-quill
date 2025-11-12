@@ -36,7 +36,7 @@ class QuillNumberPoint extends StatelessWidget {
       width: width,
       padding: EdgeInsetsDirectional.only(end: padding),
       child: Baseline(
-        baseline: (style.fontSize ?? 16) * (style.height ?? 1.0) * 0.8,
+        baseline: (style.fontSize ?? 16) * (style.height ?? 1.0) * 0.9,
         baselineType: TextBaseline.alphabetic,
         child: Text(numberText, style: style, textAlign: textAlign),
       ),
