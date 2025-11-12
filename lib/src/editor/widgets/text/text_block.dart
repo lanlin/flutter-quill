@@ -297,11 +297,16 @@ class EditableTextBlock extends StatelessWidget {
         );
       }(),
       width: () {
+        final baseWidth = fontSize * 1.5;
+        final indent = attrs[Attribute.indent.key];
+        final indentLevel = indent?.value ?? 0;
+        final extraWidth = indentLevel * fontSize;
+        
         if (isOrdered || isCodeBlock) {
-          return numberPointWidthBuilder(fontSize, count);
+          return baseWidth + extraWidth;
         }
         if (isUnordered) {
-          return numberPointWidthBuilder(fontSize, 1); // same as fontSize * 2
+          return baseWidth + extraWidth;
         }
         return null;
       }(),
