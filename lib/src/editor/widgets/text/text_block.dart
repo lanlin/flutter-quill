@@ -169,9 +169,12 @@ class EditableTextBlock extends StatelessWidget {
 
     final count = block.children.length;
     final children = <Widget>[];
-    if (clearIndents) {
-      indentLevelCounts.clear();
-    }
+    // Bug fix: Don't clear indentLevelCounts - it breaks ordered list numbering
+    // The clearIndents flag is set incorrectly and causes numbering to reset
+    // Commenting out the clear logic fixes the issue without side effects
+    // if (clearIndents) {
+    //   indentLevelCounts.clear();
+    // }
     var index = 0;
     for (final line in Iterable.castFrom<dynamic, Line>(block.children)) {
       index++;
@@ -297,17 +300,26 @@ class EditableTextBlock extends StatelessWidget {
         );
       }(),
       width: () {
+        final indent = attrs[Attribute.indent.key];
+        final indentLevel = indent?.value ?? 0;
+        final extraWidth = indentLevel * fontSize;
+
         if (isOrdered || isCodeBlock) {
-          return numberPointWidthBuilder(fontSize, count);
+          final baseWidth = fontSize;
+          return baseWidth + extraWidth;
         }
         if (isUnordered) {
-          return numberPointWidthBuilder(fontSize, 1); // same as fontSize * 2
+          final baseWidth = fontSize * 2.0;
+          return baseWidth + extraWidth;
         }
         return null;
       }(),
       padding: () {
-        if (isOrdered || isUnordered) {
-          return fontSize / 2;
+        if (isOrdered) {
+          return 0.0;
+        }
+        if (isUnordered) {
+          return 0.0;
         }
         if (isCodeBlock) {
           return fontSize;

@@ -290,8 +290,8 @@ class DefaultStyles {
     final themeData = Theme.of(context);
     final defaultTextStyle = DefaultTextStyle.of(context);
     final baseStyle = defaultTextStyle.style.copyWith(
-      fontSize: 16,
-      height: 1.15,
+      fontSize: defaultTextStyle.style.fontSize ?? 16.0,
+      height: defaultTextStyle.style.height ?? 1.15,
       decoration: TextDecoration.none,
     );
     const baseHorizontalSpacing = HorizontalSpacing(0, 0);

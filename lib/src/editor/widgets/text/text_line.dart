@@ -449,6 +449,48 @@ class _TextLineState extends State<TextLine> {
     return textStyle;
   }
 
+  TextSpan? _getListPrefix() {
+    final attrs = widget.line.style.attributes;
+    final listAttr = attrs[Attribute.list.key];
+
+    if (listAttr == null) return null;
+
+    final isOrdered = listAttr == Attribute.ol;
+    final isUnordered = listAttr == Attribute.ul;
+
+    if (!isOrdered && !isUnordered) return null;
+
+    String prefix;
+    if (isUnordered) {
+      prefix = '•  ';
+    } else {
+      final index = _getOrderedListIndex();
+      prefix = '$index.  ';
+    }
+
+    return TextSpan(
+      text: prefix,
+      style: widget.styles.lists?.style,
+    );
+  }
+
+  int _getOrderedListIndex() {
+    int index = 1;
+    var current = widget.line.previous;
+
+    while (current != null) {
+      final attrs = current.style.attributes;
+      if (attrs[Attribute.list.key] == Attribute.ol) {
+        index++;
+        current = current.previous;
+      } else {
+        break;
+      }
+    }
+
+    return index;
+  }
+
   TextStyle _applyCustomAttributes(
       TextStyle textStyle, Map<String, Attribute> attributes) {
     if (widget.customStyleBuilder == null) {

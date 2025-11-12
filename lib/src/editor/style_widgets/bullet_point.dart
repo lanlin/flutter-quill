@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import '../../../flutter_quill.dart';
 
 class QuillBulletPoint extends StatelessWidget {
   const QuillBulletPoint({
@@ -7,6 +8,7 @@ class QuillBulletPoint extends StatelessWidget {
     this.padding = 0,
     this.backgroundColor,
     this.textAlign,
+    this.attrs = const {},
     super.key,
   });
 
@@ -15,19 +17,25 @@ class QuillBulletPoint extends StatelessWidget {
   final double padding;
   final Color? backgroundColor;
   final TextAlign? textAlign;
+  final Map<String, Attribute> attrs;
 
   @override
   Widget build(BuildContext context) {
+    final fontSize =
+        style.fontSize ?? DefaultTextStyle.of(context).style.fontSize ?? 16.0;
+    final baselineOffset = fontSize * 0.5;
+
+    final indent = attrs[Attribute.indent.key];
+    final indentLevel = indent?.value ?? 0;
+    final leftPadding = indentLevel * fontSize;
+
     return Container(
-      alignment: AlignmentDirectional.topEnd,
+      alignment: AlignmentDirectional.topStart,
       width: width,
-      padding: EdgeInsetsDirectional.only(end: padding),
-      color: backgroundColor,
-      child: Text(
-        '•',
-        style: style,
-        textAlign: textAlign,
-      ),
+      padding: EdgeInsetsDirectional.only(
+          start: leftPadding, end: padding, top: baselineOffset),
+      child: Text('•',
+          style: style.copyWith(height: 1.0), textAlign: TextAlign.center),
     );
   }
 }
