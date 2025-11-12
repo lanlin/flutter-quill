@@ -43,8 +43,8 @@ class QuillNumberPoint extends StatelessWidget {
     );
 
     // Debug: print actual height value being used
-    debugPrint(
-        '[QuillNumberPoint] index: $index, fontSize: $fontSize, height: $height, effectiveHeight: ${effectiveStyle.height}');
+    print(
+        '🔢 [QuillNumberPoint] index: $index, fontSize: $fontSize, height: $height, effectiveHeight: ${effectiveStyle.height}');
 
     return Container(
       alignment: AlignmentDirectional.topStart,

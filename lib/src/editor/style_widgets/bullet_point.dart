@@ -34,8 +34,8 @@ class QuillBulletPoint extends StatelessWidget {
     );
 
     // Debug: print actual height value being used
-    debugPrint(
-        '[QuillBulletPoint] fontSize: $fontSize, height: $height, effectiveHeight: ${effectiveStyle.height}');
+    print(
+        '🔵 [QuillBulletPoint] fontSize: $fontSize, height: $height, effectiveHeight: ${effectiveStyle.height}');
 
     return Container(
       alignment: AlignmentDirectional.topStart,
