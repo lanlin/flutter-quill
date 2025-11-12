@@ -23,11 +23,11 @@ class QuillBulletPoint extends StatelessWidget {
     final baselineOffset = fontSize * 0.5;
 
     return Container(
-      alignment: AlignmentDirectional.topEnd,
+      alignment: AlignmentDirectional.topStart,
       width: width,
-      padding: EdgeInsetsDirectional.only(end: padding, top: baselineOffset),
-      child:
-          Text('•', style: style.copyWith(height: 1.0), textAlign: textAlign),
+      padding: EdgeInsetsDirectional.only(top: baselineOffset),
+      child: Text('•',
+          style: style.copyWith(height: 1.0), textAlign: TextAlign.left),
     );
   }
 }
