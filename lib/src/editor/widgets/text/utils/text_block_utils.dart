@@ -70,7 +70,7 @@ abstract final class TextBlockUtils {
       } else if (attrs.containsKey(Attribute.codeBlock.key)) {
         baseIndent = numberPointWidthBuilder(fontSize, count);
       } else {
-        baseIndent = fontSize * 0.6;
+        baseIndent = fontSize;
       }
     }
 
