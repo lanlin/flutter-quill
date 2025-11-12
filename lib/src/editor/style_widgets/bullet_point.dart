@@ -30,18 +30,25 @@ class QuillBulletPoint extends StatelessWidget {
     final leftPadding = indentLevel * fontSize;
 
     final effectiveStyle = style.copyWith(
-      height: height,
+      height: 1.0,
     );
 
-    // Debug: print actual height value being used
-    print(
-        '🔵 [QuillBulletPoint] fontSize: $fontSize, height: $height, effectiveHeight: ${effectiveStyle.height}');
+    // Calculate baseline offset to align bullet with first line text
+    // Formula: fontSize * (lineHeight - 1.0) * 0.7
+    // The coefficient 0.7 ensures proper alignment across different font sizes
+    // - When lineHeight = 1.6, extra space = fontSize * 0.6
+    // - Offset = fontSize * 0.6 * 0.7 ≈ fontSize * 0.42 (pushes bullet down)
+    final baselineOffset =
+        height != null ? fontSize * (height - 1.0) * 0.7 : 0.0;
 
     return Container(
-      alignment: AlignmentDirectional.topStart,
       width: width,
-      padding: EdgeInsetsDirectional.only(start: leftPadding, end: padding),
-      child: Text('•', style: effectiveStyle, textAlign: TextAlign.center),
+      padding: EdgeInsetsDirectional.only(
+        start: leftPadding,
+        end: padding,
+        top: baselineOffset,
+      ),
+      child: Text('•', style: effectiveStyle, textAlign: TextAlign.left),
     );
   }
 }
