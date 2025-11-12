@@ -74,7 +74,7 @@ abstract final class TextBlockUtils {
       }
 
       if (extraIndent == 0) {
-        baseIndent = fontSize;
+        baseIndent = fontSize * 1.5;
       }
     }
 
