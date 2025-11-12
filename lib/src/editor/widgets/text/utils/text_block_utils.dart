@@ -73,12 +73,10 @@ abstract final class TextBlockUtils {
         baseIndent = fontSize * 2;
       }
 
-      if (extraIndent == 0) {
-        baseIndent = fontSize * 1.5;
-      }
+      baseIndent = fontSize * 1.5;
     }
 
-    return HorizontalSpacing(baseIndent + extraIndent, 0);
+    return HorizontalSpacing(baseIndent, 0);
   }
 
   /// Get the width for the number point leading using the default

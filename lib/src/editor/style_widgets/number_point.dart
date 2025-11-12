@@ -34,10 +34,15 @@ class QuillNumberPoint extends StatelessWidget {
     final lineHeight = style.height ?? 1.0;
     final baselineOffset = fontSize * 0.5;
 
+    final indent = attrs[Attribute.indent.key];
+    final indentLevel = indent?.value ?? 0;
+    final leftPadding = indentLevel * fontSize;
+
     return Container(
       alignment: AlignmentDirectional.topStart,
       width: width,
-      padding: EdgeInsetsDirectional.only(top: baselineOffset),
+      padding:
+          EdgeInsetsDirectional.only(start: leftPadding, top: baselineOffset),
       child: Text(numberText,
           style: style.copyWith(height: 1.0), textAlign: TextAlign.left),
     );
