@@ -316,7 +316,7 @@ class EditableTextBlock extends StatelessWidget {
           return 0.0;
         }
         if (isUnordered) {
-          return fontSize;
+          return 0.0;
         }
         if (isCodeBlock) {
           return fontSize;
