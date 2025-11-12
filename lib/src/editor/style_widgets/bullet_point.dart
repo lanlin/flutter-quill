@@ -20,7 +20,7 @@ class QuillBulletPoint extends StatelessWidget {
   Widget build(BuildContext context) {
     final fontSize = style.fontSize ?? 16;
     final lineHeight = style.height ?? 1.0;
-    final baselineOffset = fontSize * 0.7;
+    final baselineOffset = fontSize * 0.5;
 
     return Container(
       alignment: AlignmentDirectional.topEnd,
