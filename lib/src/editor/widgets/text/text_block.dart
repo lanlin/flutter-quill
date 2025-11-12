@@ -312,8 +312,11 @@ class EditableTextBlock extends StatelessWidget {
         return null;
       }(),
       padding: () {
-        if (isOrdered || isUnordered) {
+        if (isOrdered) {
           return fontSize / 2;
+        }
+        if (isUnordered) {
+          return fontSize * 0.8;
         }
         if (isCodeBlock) {
           return fontSize;
