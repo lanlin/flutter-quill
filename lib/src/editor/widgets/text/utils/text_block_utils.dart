@@ -74,7 +74,7 @@ abstract final class TextBlockUtils {
       }
     }
 
-    return HorizontalSpacing(extraIndent > 0 ? baseIndent + extraIndent : 0, 0);
+    return HorizontalSpacing(baseIndent + extraIndent, 0);
   }
 
   /// Get the width for the number point leading using the default
