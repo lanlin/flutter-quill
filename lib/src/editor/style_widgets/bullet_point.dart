@@ -30,7 +30,7 @@ class QuillBulletPoint extends StatelessWidget {
     final leftPadding = indentLevel * fontSize;
 
     final effectiveStyle = style.copyWith(
-      height: 1.0,
+      height: 1,
     );
 
     // Calculate baseline offset to align bullet with first line text

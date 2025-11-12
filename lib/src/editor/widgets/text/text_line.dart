@@ -475,7 +475,7 @@ class _TextLineState extends State<TextLine> {
   }
 
   int _getOrderedListIndex() {
-    int index = 1;
+    var index = 1;
     var current = widget.line.previous;
 
     while (current != null) {
