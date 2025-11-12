@@ -29,28 +29,30 @@ class QuillNumberPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final numberText = withDot ? '$index.' : index;
+
     if (!attrs.containsKey(Attribute.indent.key) && indentLevelCounts.isEmpty) {
       return Container(
-        alignment: AlignmentDirectional.topEnd,
+        alignment: AlignmentDirectional.centerEnd,
         width: width,
         padding: EdgeInsetsDirectional.only(end: padding),
         color: backgroundColor,
-        child: Text(
-          withDot ? '$index.' : index,
-          style: style,
-          textAlign: textAlign,
+        child: Baseline(
+          baseline: (style.fontSize ?? 16) * (style.height ?? 1.0) * 0.75,
+          baselineType: TextBaseline.alphabetic,
+          child: Text(numberText, style: style, textAlign: textAlign),
         ),
       );
     }
     return Container(
-      alignment: AlignmentDirectional.topEnd,
+      alignment: AlignmentDirectional.centerEnd,
       width: width,
       padding: EdgeInsetsDirectional.only(end: padding),
       color: backgroundColor,
-      child: Text(
-        withDot ? '$index.' : index,
-        style: style,
-        textAlign: textAlign,
+      child: Baseline(
+        baseline: (style.fontSize ?? 16) * (style.height ?? 1.0) * 0.75,
+        baselineType: TextBaseline.alphabetic,
+        child: Text(numberText, style: style, textAlign: textAlign),
       ),
     );
   }
