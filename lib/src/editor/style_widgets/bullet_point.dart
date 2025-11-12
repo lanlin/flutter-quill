@@ -20,7 +20,11 @@ class QuillBulletPoint extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      child: Text('•  ', style: style, textAlign: TextAlign.right),
+      child: Baseline(
+        baseline: (style.fontSize ?? 16) * (style.height ?? 1.0) * 0.75,
+        baselineType: TextBaseline.alphabetic,
+        child: Text('•  ', style: style, textAlign: TextAlign.right),
+      ),
     );
   }
 }
