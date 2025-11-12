@@ -23,7 +23,7 @@ class QuillBulletPoint extends StatelessWidget {
   Widget build(BuildContext context) {
     final fontSize =
         style.fontSize ?? DefaultTextStyle.of(context).style.fontSize ?? 16.0;
-    final baselineOffset = fontSize * 0.5;
+    final baselineOffset = fontSize * 0.4;
 
     final indent = attrs[Attribute.indent.key];
     final indentLevel = indent?.value ?? 0;
