@@ -66,11 +66,11 @@ abstract final class TextBlockUtils {
 
     if (attrs.containsKey(Attribute.list.key)) {
       if (attrs[Attribute.list.key] == Attribute.ol) {
-        baseIndent = fontSize * 2.0;
+        baseIndent = fontSize * 1.5;
       } else if (attrs.containsKey(Attribute.codeBlock.key)) {
         baseIndent = numberPointWidthBuilder(fontSize, count);
       } else {
-        baseIndent = fontSize * 1.2;
+        baseIndent = fontSize * 1.5;
       }
     }
 

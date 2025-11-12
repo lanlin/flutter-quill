@@ -302,11 +302,11 @@ class EditableTextBlock extends StatelessWidget {
         final extraWidth = indentLevel * fontSize;
 
         if (isOrdered || isCodeBlock) {
-          final baseWidth = fontSize * 2.0;
+          final baseWidth = fontSize * 1.5;
           return baseWidth + extraWidth;
         }
         if (isUnordered) {
-          final baseWidth = fontSize * 1.2;
+          final baseWidth = fontSize * 1.5;
           return baseWidth + extraWidth;
         }
         return null;
