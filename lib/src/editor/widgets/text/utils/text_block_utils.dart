@@ -73,7 +73,7 @@ abstract final class TextBlockUtils {
         baseIndent = fontSize * 2;
       }
 
-      baseIndent = fontSize * 1.5;
+      baseIndent = fontSize * 1.2;
     }
 
     return HorizontalSpacing(baseIndent, 0);
