@@ -18,16 +18,9 @@ class QuillBulletPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: AlignmentDirectional.topEnd,
+    return SizedBox(
       width: width,
-      padding: EdgeInsetsDirectional.only(end: padding),
-      color: backgroundColor,
-      child: Padding(
-        padding: EdgeInsets.only(
-            top: (style.fontSize ?? 16) * (style.height ?? 1.0) * 0.15),
-        child: Text('•', style: style, textAlign: textAlign),
-      ),
+      child: Text('•  ', style: style, textAlign: TextAlign.right),
     );
   }
 }

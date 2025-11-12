@@ -194,34 +194,17 @@ class _TextLineState extends State<TextLine> {
 
   InlineSpan _getTextSpanForWholeLine() {
     var lineStyle = _getLineStyle(widget.styles);
-
-    final listPrefix = _getListPrefix();
-
     if (!widget.line.hasEmbed) {
-      final mainSpan = _buildTextSpan(
+      return _buildTextSpan(
         widget.styles,
         widget.line.children,
         lineStyle,
         widget.textSpanBuilder,
       );
-
-      if (listPrefix != null) {
-        return TextSpan(
-          style: lineStyle,
-          children: [listPrefix, mainSpan],
-        );
-      }
-
-      return mainSpan;
     }
 
     // The line could contain more than one Embed & more than one Text
     final textSpanChildren = <InlineSpan>[];
-
-    if (listPrefix != null) {
-      textSpanChildren.add(listPrefix);
-    }
-
     var textNodes = LinkedList<Node>();
     for (var child in widget.line.children) {
       if (child is Embed) {
