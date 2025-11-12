@@ -169,9 +169,11 @@ class EditableTextBlock extends StatelessWidget {
 
     final count = block.children.length;
     final children = <Widget>[];
-    if (clearIndents) {
-      indentLevelCounts.clear();
-    }
+    // Bug fix: Don't clear indentLevelCounts for continuous ordered lists
+    // The clearIndents logic is incorrect and causes all numbers to show as 1
+    // if (clearIndents) {
+    //   indentLevelCounts.clear();
+    // }
     var index = 0;
     for (final line in Iterable.castFrom<dynamic, Line>(block.children)) {
       index++;
