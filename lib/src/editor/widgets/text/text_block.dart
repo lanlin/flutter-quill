@@ -283,6 +283,7 @@ class EditableTextBlock extends StatelessWidget {
           return defaultStyles.leading!.style.copyWith(
             fontSize: size,
             color: fontColor,
+            height: defaultStyles.leading!.style.height,
           );
         }
         if (isUnordered) {
@@ -290,6 +291,7 @@ class EditableTextBlock extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: size,
             color: fontColor,
+            height: defaultStyles.leading!.style.height,
           );
         }
         if (isCheck) {
@@ -297,6 +299,7 @@ class EditableTextBlock extends StatelessWidget {
         }
         return defaultStyles.code!.style.copyWith(
           color: defaultStyles.code!.style.color!.withValues(alpha: 0.4),
+          height: defaultStyles.code!.style.height,
         );
       }(),
       width: () {
