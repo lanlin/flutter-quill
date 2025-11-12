@@ -1341,7 +1341,7 @@ class RenderEditableTextLine extends RenderEditableBox {
 
     _body!.layout(innerConstraints, parentUsesSize: true);
     (_body!.parentData as BoxParentData).offset =
-        Offset(0, _resolvedPadding!.top);
+        Offset(_resolvedPadding!.left, _resolvedPadding!.top);
 
     if (_leading != null) {
       final leadingConstraints = innerConstraints.copyWith(
@@ -1350,11 +1350,11 @@ class RenderEditableTextLine extends RenderEditableBox {
           maxHeight: _body!.size.height);
       _leading!.layout(leadingConstraints, parentUsesSize: true);
       (_leading!.parentData as BoxParentData).offset =
-          Offset(-indentWidth, _resolvedPadding!.top);
+          Offset(0, _resolvedPadding!.top);
     }
 
     size = constraints.constrain(Size(
-      _body!.size.width + _resolvedPadding!.right,
+      _resolvedPadding!.left + _body!.size.width + _resolvedPadding!.right,
       _resolvedPadding!.top + _body!.size.height + _resolvedPadding!.bottom,
     ));
 
