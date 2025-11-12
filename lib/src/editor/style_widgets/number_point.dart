@@ -30,7 +30,8 @@ class QuillNumberPoint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final numberText = withDot ? '$index.' : index;
-    final fontSize = style.fontSize ?? DefaultTextStyle.of(context).style.fontSize ?? 16.0;
+    final fontSize =
+        style.fontSize ?? DefaultTextStyle.of(context).style.fontSize ?? 16.0;
     final baselineOffset = fontSize * 0.5;
 
     final indent = attrs[Attribute.indent.key];
