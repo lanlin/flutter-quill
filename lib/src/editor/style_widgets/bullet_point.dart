@@ -32,8 +32,8 @@ class QuillBulletPoint extends StatelessWidget {
     return Container(
       alignment: AlignmentDirectional.topStart,
       width: width,
-      padding:
-          EdgeInsetsDirectional.only(start: leftPadding, end: padding, top: baselineOffset),
+      padding: EdgeInsetsDirectional.only(
+          start: leftPadding, end: padding, top: baselineOffset),
       child: Text('•',
           style: style.copyWith(height: 1.0), textAlign: TextAlign.left),
     );
