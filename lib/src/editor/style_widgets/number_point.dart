@@ -29,14 +29,16 @@ class QuillNumberPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numberText = withDot ? '$index.  ' : '$index  ';
+    final numberText = withDot ? '$index.' : index;
 
-    return SizedBox(
+    return Container(
+      alignment: AlignmentDirectional.centerEnd,
       width: width,
+      padding: EdgeInsetsDirectional.only(end: padding),
       child: Baseline(
-        baseline: (style.fontSize ?? 16) * (style.height ?? 1.0) * 0.75,
+        baseline: (style.fontSize ?? 16) * (style.height ?? 1.0) * 0.8,
         baselineType: TextBaseline.alphabetic,
-        child: Text(numberText, style: style, textAlign: TextAlign.right),
+        child: Text(numberText, style: style, textAlign: textAlign),
       ),
     );
   }
