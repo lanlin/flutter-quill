@@ -30,16 +30,16 @@ class QuillNumberPoint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final numberText = withDot ? '$index.' : index;
+    final fontSize = style.fontSize ?? 16;
+    final lineHeight = style.height ?? 1.0;
+    final baselineOffset = fontSize * 0.8;
 
     return Container(
-      alignment: AlignmentDirectional.centerEnd,
+      alignment: AlignmentDirectional.topEnd,
       width: width,
-      padding: EdgeInsetsDirectional.only(end: padding),
-      child: Baseline(
-        baseline: (style.fontSize ?? 16) * (style.height ?? 1.0) * 0.9,
-        baselineType: TextBaseline.alphabetic,
-        child: Text(numberText, style: style, textAlign: textAlign),
-      ),
+      padding: EdgeInsetsDirectional.only(end: padding, top: baselineOffset),
+      child: Text(numberText,
+          style: style.copyWith(height: 1.0), textAlign: textAlign),
     );
   }
 }
