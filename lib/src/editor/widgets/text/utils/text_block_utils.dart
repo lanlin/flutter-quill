@@ -65,15 +65,16 @@ abstract final class TextBlockUtils {
     var baseIndent = 0.0;
 
     if (attrs.containsKey(Attribute.list.key)) {
-      baseIndent = fontSize * 2;
       if (attrs[Attribute.list.key] == Attribute.ol) {
         baseIndent = numberPointWidthBuilder(fontSize, count);
       } else if (attrs.containsKey(Attribute.codeBlock.key)) {
         baseIndent = numberPointWidthBuilder(fontSize, count);
+      } else {
+        baseIndent = fontSize * 2;
       }
     }
 
-    return HorizontalSpacing(baseIndent + extraIndent, 0);
+    return HorizontalSpacing(extraIndent > 0 ? baseIndent + extraIndent : 0, 0);
   }
 
   /// Get the width for the number point leading using the default
