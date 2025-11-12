@@ -23,16 +23,21 @@ class QuillBulletPoint extends StatelessWidget {
   Widget build(BuildContext context) {
     final fontSize =
         style.fontSize ?? DefaultTextStyle.of(context).style.fontSize ?? 16.0;
+    final height = style.height ?? DefaultTextStyle.of(context).style.height;
 
     final indent = attrs[Attribute.indent.key];
     final indentLevel = indent?.value ?? 0;
     final leftPadding = indentLevel * fontSize;
 
+    final effectiveStyle = style.copyWith(
+      height: height,
+    );
+
     return Container(
       alignment: AlignmentDirectional.topStart,
       width: width,
       padding: EdgeInsetsDirectional.only(start: leftPadding, end: padding),
-      child: Text('•', style: style, textAlign: TextAlign.center),
+      child: Text('•', style: effectiveStyle, textAlign: TextAlign.center),
     );
   }
 }

@@ -32,16 +32,21 @@ class QuillNumberPoint extends StatelessWidget {
     final numberText = withDot ? '$index.' : index;
     final fontSize =
         style.fontSize ?? DefaultTextStyle.of(context).style.fontSize ?? 16.0;
+    final height = style.height ?? DefaultTextStyle.of(context).style.height;
 
     final indent = attrs[Attribute.indent.key];
     final indentLevel = indent?.value ?? 0;
     final leftPadding = indentLevel * fontSize;
 
+    final effectiveStyle = style.copyWith(
+      height: height,
+    );
+
     return Container(
       alignment: AlignmentDirectional.topStart,
       width: width,
       padding: EdgeInsetsDirectional.only(start: leftPadding, end: padding),
-      child: Text(numberText, style: style, textAlign: TextAlign.left),
+      child: Text(numberText, style: effectiveStyle, textAlign: TextAlign.left),
     );
   }
 }
