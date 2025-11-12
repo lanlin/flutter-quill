@@ -169,13 +169,12 @@ class EditableTextBlock extends StatelessWidget {
 
     final count = block.children.length;
     final children = <Widget>[];
-    // Bug fix: Only clear indents if current block is not an ordered list
-    // This ensures continuous ordered list items maintain their numbering
-    final isOrderedList =
-        block.style.attributes[Attribute.list.key] == Attribute.ol;
-    if (clearIndents && !isOrderedList) {
-      indentLevelCounts.clear();
-    }
+    // Bug fix: Don't clear indentLevelCounts - it breaks ordered list numbering
+    // The clearIndents flag is set incorrectly and causes numbering to reset
+    // Commenting out the clear logic fixes the issue without side effects
+    // if (clearIndents) {
+    //   indentLevelCounts.clear();
+    // }
     var index = 0;
     for (final line in Iterable.castFrom<dynamic, Line>(block.children)) {
       index++;
