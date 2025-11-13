@@ -31,7 +31,7 @@ class QuillNumberPoint extends StatelessWidget {
   Widget build(BuildContext context) {
     final numberText = withDot ? '$index.' : index;
     final fontSize =
-        style.fontSize ?? DefaultTextStyle.of(context).style.fontSize ?? 16.0;
+        style.fontSize ?? DefaultTextStyle.of(context).style.fontSize ?? 17.0;
     final height = style.height ?? DefaultTextStyle.of(context).style.height;
 
     final indent = attrs[Attribute.indent.key];
@@ -43,12 +43,12 @@ class QuillNumberPoint extends StatelessWidget {
     );
 
     // Calculate baseline offset to align number with first line text
-    // Formula: fontSize * (lineHeight - 1.0) * 0.7
-    // The coefficient 0.7 ensures proper alignment across different font sizes
-    // - When lineHeight = 1.6, extra space = fontSize * 0.6
-    // - Offset = fontSize * 0.6 * 0.7 ≈ fontSize * 0.42 (pushes number down)
+    // Formula: fontSize * (lineHeight - 1.0) * coefficient
+    // Coefficient adjusts for lineHeight change (1.6 → 1.29)
+    // - When lineHeight = 1.29, extra space = fontSize * 0.29
+    // - Coefficient ≈ 0.52 for proper alignment with new tighter spacing
     final baselineOffset =
-        height != null ? fontSize * (height - 1.0) * 0.7 : 0.0;
+        height != null ? fontSize * (height - 1.0) * 0.52 : 0.0;
 
     return Container(
       width: width,

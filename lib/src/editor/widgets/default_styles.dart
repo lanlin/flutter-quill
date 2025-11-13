@@ -289,27 +289,39 @@ class DefaultStyles {
   static DefaultStyles getInstance(BuildContext context) {
     final themeData = Theme.of(context);
     final defaultTextStyle = DefaultTextStyle.of(context);
+
+    // Inherit from context instead of hardcoding
+    // Base font size and line height from DefaultTextStyle
+    // ChatGPT iOS App Matched Values (verified by user testing):
+    // - baseFontSize: 17pt
+    // - baseLineHeight: 1.29 (user confirmed: tighter than previous 1.6)
+    final baseFontSize = defaultTextStyle.style.fontSize ?? 17.0;
+    final baseLineHeight = defaultTextStyle.style.height ?? 1.29;
+
     final baseStyle = defaultTextStyle.style.copyWith(
-      fontSize: defaultTextStyle.style.fontSize ?? 16.0,
-      height: defaultTextStyle.style.height ?? 1.15,
+      fontSize: baseFontSize,
+      height: baseLineHeight,
       decoration: TextDecoration.none,
     );
+
     const baseHorizontalSpacing = HorizontalSpacing(0, 0);
     const baseVerticalSpacing = VerticalSpacing(6, 0);
     final fontFamily = themeData.isCupertino ? 'Menlo' : 'Roboto Mono';
 
     final inlineCodeStyle = TextStyle(
-      fontSize: 14,
+      fontSize: 15,
       color: themeData.colorScheme.primary.withValues(alpha: 0.8),
       fontFamily: fontFamily,
     );
 
     return DefaultStyles(
+      // H1 (34pt) - letterSpacing reference: -0.80 to -0.95
+      // iOS tracking: ~-26/1000em scaled proportionally
       h1: DefaultTextBlockStyle(
           defaultTextStyle.style.copyWith(
             fontSize: 34,
             color: defaultTextStyle.style.color,
-            letterSpacing: -0.5,
+            letterSpacing: -0.88,
             height: 1.083,
             fontWeight: FontWeight.bold,
             decoration: TextDecoration.none,
@@ -318,11 +330,12 @@ class DefaultStyles {
           const VerticalSpacing(16, 0),
           VerticalSpacing.zero,
           null),
+      // H2 (30pt) - letterSpacing reference: -0.70 to -0.85
       h2: DefaultTextBlockStyle(
           defaultTextStyle.style.copyWith(
             fontSize: 30,
             color: defaultTextStyle.style.color,
-            letterSpacing: -0.8,
+            letterSpacing: -0.78,
             height: 1.067,
             fontWeight: FontWeight.bold,
             decoration: TextDecoration.none,
@@ -331,11 +344,12 @@ class DefaultStyles {
           const VerticalSpacing(8, 0),
           VerticalSpacing.zero,
           null),
+      // H3 (24pt) - letterSpacing reference: -0.56 to -0.68
       h3: DefaultTextBlockStyle(
         defaultTextStyle.style.copyWith(
           fontSize: 24,
           color: defaultTextStyle.style.color,
-          letterSpacing: -0.5,
+          letterSpacing: -0.62,
           height: 1.083,
           fontWeight: FontWeight.bold,
           decoration: TextDecoration.none,
@@ -345,11 +359,12 @@ class DefaultStyles {
         VerticalSpacing.zero,
         null,
       ),
+      // H4 (20pt) - letterSpacing reference: -0.46 to -0.56 (same as main app)
       h4: DefaultTextBlockStyle(
         defaultTextStyle.style.copyWith(
           fontSize: 20,
           color: defaultTextStyle.style.color,
-          letterSpacing: -0.4,
+          letterSpacing: -0.52,
           height: 1.1,
           fontWeight: FontWeight.bold,
           decoration: TextDecoration.none,
@@ -359,11 +374,12 @@ class DefaultStyles {
         VerticalSpacing.zero,
         null,
       ),
+      // H5 (18pt) - letterSpacing reference: -0.42 to -0.50 (same as main app)
       h5: DefaultTextBlockStyle(
         defaultTextStyle.style.copyWith(
           fontSize: 18,
           color: defaultTextStyle.style.color,
-          letterSpacing: -0.2,
+          letterSpacing: -0.47,
           height: 1.11,
           fontWeight: FontWeight.bold,
           decoration: TextDecoration.none,
@@ -373,11 +389,12 @@ class DefaultStyles {
         VerticalSpacing.zero,
         null,
       ),
+      // H6 (16pt) - letterSpacing reference: -0.38 to -0.46
       h6: DefaultTextBlockStyle(
         defaultTextStyle.style.copyWith(
           fontSize: 16,
           color: defaultTextStyle.style.color,
-          letterSpacing: -0.1,
+          letterSpacing: -0.42,
           height: 1.125,
           fontWeight: FontWeight.bold,
           decoration: TextDecoration.none,
@@ -388,7 +405,7 @@ class DefaultStyles {
         null,
       ),
       lineHeightNormal: DefaultTextBlockStyle(
-        baseStyle.copyWith(height: 1.15),
+        baseStyle.copyWith(height: baseLineHeight),
         baseHorizontalSpacing,
         VerticalSpacing.zero,
         VerticalSpacing.zero,
@@ -463,7 +480,7 @@ class DefaultStyles {
       placeHolder: DefaultTextBlockStyle(
           defaultTextStyle.style.copyWith(
             fontSize: 20,
-            height: 1.5,
+            height: baseLineHeight,
             color: Colors.grey.withValues(alpha: 0.6),
           ),
           baseHorizontalSpacing,
@@ -493,8 +510,8 @@ class DefaultStyles {
           TextStyle(
             color: Colors.blue.shade900.withValues(alpha: 0.9),
             fontFamily: fontFamily,
-            fontSize: 13,
-            height: 1.15,
+            fontSize: 15,
+            height: 1.5,
           ),
           baseHorizontalSpacing,
           baseVerticalSpacing,
