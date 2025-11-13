@@ -35,11 +35,11 @@ class QuillBulletPoint extends StatelessWidget {
 
     // Calculate baseline offset to align bullet with first line text
     // Formula: fontSize * (lineHeight - 1.0) * coefficient
-    // Coefficient adjusts for lineHeight change (1.6 → 1.29)
-    // - When lineHeight = 1.29, extra space = fontSize * 0.29
-    // - Coefficient ≈ 0.52 for proper alignment with new tighter spacing
+    // Coefficient adjusts for lineHeight change (1.6 → 1.35)
+    // - When lineHeight = 1.35, extra space = fontSize * 0.35
+    // - Coefficient ≈ 0.43 for proper alignment with new tighter spacing
     final baselineOffset =
-        height != null ? fontSize * (height - 1.0) * 0.52 : 0.0;
+        height != null ? fontSize * (height - 1.0) * 0.43 : 0.0;
 
     return Container(
       width: width,

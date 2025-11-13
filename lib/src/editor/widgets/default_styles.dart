@@ -294,9 +294,9 @@ class DefaultStyles {
     // Base font size and line height from DefaultTextStyle
     // ChatGPT iOS App Matched Values (verified by user testing):
     // - baseFontSize: 17pt
-    // - baseLineHeight: 1.29 (user confirmed: tighter than previous 1.6)
+    // - baseLineHeight: 1.35 (user confirmed: tighter than previous 1.6)
     final baseFontSize = defaultTextStyle.style.fontSize ?? 17.0;
-    final baseLineHeight = defaultTextStyle.style.height ?? 1.29;
+    final baseLineHeight = defaultTextStyle.style.height ?? 1.35;
 
     final baseStyle = defaultTextStyle.style.copyWith(
       fontSize: baseFontSize,
